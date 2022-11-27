@@ -22,33 +22,21 @@ function listarNotas(){
         tx.executeSql('SELECT * FROM NOTAS', [], function (tx, results) {
             var len = results.rows.length, i;
             var id = 0;
+
             for (i = 0; i < len; i++) {
-              document.getElementById("nota_list").innerHTML += `<div class="nota" style=" background-color: ${results.rows.item(i).cor};" onclick="dadosNota(${results.rows.item(i).id});" class="">
+              document.getElementById("nota_list").innerHTML += `<div class="nota" style=" background-color: ${results.rows.item(i).cor};" onclick="ver_nota(${results.rows.item(i).id});">
               <p class="text-center"><b>${results.rows.item(i).titulo}</b></p>
               <p class="">${results.rows.item(i).texto}</p>
               </div>`
             }
+            
           });
     })
     
-}    
-
-       
-
-function ver_nota(id){
-  window.location.assign('editar.html');
-  db.transaction(function (tx) {
-    
-      tx.executeSql('SELECT * FROM NOTAS where id = ?', [id], function (tx, results) {
-         var titulo = results.rows.item(0).titulo;
-         var texto = results.rows.item(0).texto;
-         var titulo_html = document.getElementById("titulo_nota_edit");
-         var texto_html = document.getElementById("text_nota_edit");
-
-         titulo_html.innerHTML = titulo;
-         texto_html.innerHTML = texto;
-        
-      })
-  })
-  
 }
+
+
+export default {
+  listarNotas: listarNotas,
+}
+

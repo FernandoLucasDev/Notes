@@ -36,17 +36,17 @@ function listarNotas(){
        
 
 function ver_nota(id){
-  window.location.assign('teste.html');
+  window.location.assign('editar.html');
   db.transaction(function (tx) {
     
       tx.executeSql('SELECT * FROM NOTAS where id = ?', [id], function (tx, results) {
-         //var titulo = results.rows.item(0).titulo;
-         //var texto = results.rows.item(0).texto;
-         //var titulo_html = document.getElementById("titulo_nota_edit");
-         //var texto_html = document.getElementById("text_nota_edit");
-         document.getElementById("nota_see").innerHTML += `<p>teste</p>`
-        
-        
+         var titulo = results.rows.item(0).titulo;
+         var texto = results.rows.item(0).texto;
+         var titulo_html = document.getElementById("titulo_nota_edit");
+         var texto_html = document.getElementById("text_nota_edit");
+
+         titulo_html.innerHTML = titulo;
+         texto_html.innerHTML = texto;
         
       })
   })

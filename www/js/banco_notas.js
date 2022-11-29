@@ -35,8 +35,27 @@ function listarNotas(){
     
 }
 
+listarNotas();  
 
-export default {
-  listarNotas: listarNotas,
+
+function ver_nota(id){
+  db.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM NOTAS where id = ?', [id], function (tx, results) {
+  
+  var titulo = results.rows.item(0).titulo;
+  var texto = results.rows.item(0).texto;
+  var cor = results.rows.item(0).cor;
+  
+  
+  localStorage.setItem('titulo', titulo);
+  localStorage.setItem('texto', texto);
+  localStorage.setItem('cor', cor);
+  localStorage.setItem('id', id);
+
+  window.location.assign('editar.html');
+  
+})
+})
 }
+
 

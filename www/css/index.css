@@ -53,11 +53,22 @@ nav{
     margin-left: 20px;
 }
 #titulo_nota{
-    width: 98%;
+    width: 95%;
     margin: auto;
     border: none;
 }
 #corpo_nota{
+    width: 95%;
+    border: none;
+    margin-top: 1rem;
+}
+
+#update_title{
+    width: 98%;
+    margin: auto;
+    border: none;
+}
+#update_text{
     width: 98%;
     border: none;
     margin-top: 1rem;
@@ -94,4 +105,15 @@ nav{
     bottom: 0;
     right: 0;
     margin: 5%;
+}
+
+#nota_view {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
 }
